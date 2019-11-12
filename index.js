@@ -93,10 +93,9 @@ function processSum(numberList, callback) {
   /* CODE HERE */
   return callback (numberList.reduce(function(accumulator, numberList){
     return accumulator + numberList;
-  },0);
-  )
+  },0));
+  
 }
-
 /**
  * ### Challenge `processProduct`
  * 
@@ -115,9 +114,12 @@ function processSum(numberList, callback) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
+function processProduct(num1, num2, callback) {
   /* CODE HERE */
+  return callback (multiply(num1, num2));
 }
+const multiply = (num1, num2) => num1*num2;
+
 
 /**
  * ### Challenge `processContains`
@@ -139,8 +141,9 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
+function processContains(item, list, callback) {
   /* CODE HERE */
+  return callback (list.includes(item));
 }
 
 /**
