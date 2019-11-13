@@ -187,8 +187,14 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+
+function getFullNames(runners) {
   /* CODE HERE */
+  let runnerNames = [];
+  runners.forEach(function(currentValue){
+    return runnerNames.push (`${currentValue.last_name}, ${currentValue.first_name}`);
+  });
+  return runnerNames;
 }
 
 /**
@@ -203,8 +209,12 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(runners) {
   /* CODE HERE */
+  const firstCaps = runners.map(function(currentValue){
+    return currentValue.first_name.toUpperCase();
+  });
+ return firstCaps;
 }
 
 /**
@@ -220,8 +230,13 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners, tShirtSize){
   /* CODE HERE */
+  const newSizeFilter = runners.filter(function(currentValue){
+    return currentValue.shirt_size === tShirtSize;
+  })
+  
+  return newSizeFilter;
 }
 
 /**
@@ -234,8 +249,11 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  const donation = runners.reduce(function(accumulator, currentValue){
+    return accumulator + currentValue.donation;
+  },0);
+  return donation;
 }
 
 /////////////// CLOSURES ///////////////
@@ -254,12 +272,15 @@ function tallyUpDonations(/* CODE HERE */) {
  * counter() // should return 2
  * etc
 */
-function counterMaker() {
+function counterMaker(counter) {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
-  }
+  let count = 0;
+   function counter() {
+    return count++;
+   }
+    return counter;
+  
+  
   // BROKEN CODE ENDS
 }
 
@@ -283,8 +304,20 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
+function counterMakerWithLimit(limit) {
   /* CODE HERE */
+  let count = 0;
+  function counter(){
+    if(limit>= count){
+      return count++;
+    }
+    else if (limit<count){
+      count = 0;
+      return count++;
+    }
+      
+  }
+  return counter;
 }
 
 /////////////// END OF CHALLENGE ///////////////
